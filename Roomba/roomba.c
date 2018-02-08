@@ -1,14 +1,25 @@
 #include <kipr/botball.h>
+#include <math.h>
 double matrix[] = {0,0,0};
+int movementPorts[] = {0,0};
+int turnPorts[] = {}; //{left,right}
 void move(double distance, double speed = 1)
 {
-  msleep(distance/speed);
+  for(int i = 0;i<movementPorts.Length;i++) {
+    mrp(movementPorts[i],speed,distance);
+  };
   matrix[0] += cos(matrix[2]*PI)*distance;
   matrix[1] += sin(matrix[2]*PI)*distance;
 }
 void turn(double radians, double speed = 1)//the radians variable is the radians divided by pi
 {
-  msleep(radians/speed);
+  for(int i = 0;i<turnPorts.Length;i++) {
+    mult = 1;
+    if(i==0) {
+      mult = -1;
+    };
+    mrp(movementPorts[i],speed*mult,radians);
+  };
   matrix[2] += radians;
   if(matrix[2] > 2) {
     matrix[2] -= 2;
