@@ -30,6 +30,7 @@ void turn(double radians, double speed = 1)//the radians variable is the radians
 }
 bool getButtonState(int buttonId)
 {
+  printf(digital(buttonId));
   return false;
 }
 void turnTo(double radians, double speed = 1)//the radians variable is the radians divided by pi
