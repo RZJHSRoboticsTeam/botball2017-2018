@@ -2,7 +2,7 @@
 #include <math.h>
 double matrix[] = {0,0,0};
 int movementPorts[] = {0,0};
-int turnPorts[] = {}; //{left,right}
+int turnPorts[2] = {}; //{left,right}
 void move(double distance, double speed = 1)
 {
   for(int i = 0;i<movementPorts.Length;i++) {
@@ -18,7 +18,7 @@ void turn(double radians, double speed = 1)//the radians variable is the radians
     if(i==0) {
       mult = -1;
     };
-    mrp(movementPorts[i],speed*mult,radians);
+    mrp(movementPorts[i],speed*mult,radians/2);
   };
   matrix[2] += radians;
   if(matrix[2] > 2) {
