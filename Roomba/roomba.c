@@ -57,7 +57,7 @@ void turn(double radians, double speed)//the radians variable is the radians div
   if(radians<0) {
     radians *= -1;
     speed *= -1;
-  }
+  };
   create_spin_block(speed,radians*180);
   create_stop();
   pos[2] += radians;
@@ -69,7 +69,7 @@ void turnTo(double radians, double speed)//the radians variable is the radians d
 }
 void moveTo(double x, double y, double speed)
 {
-  turnTo(atan2(y-pos[1],x-pos[0]),100);
+  turnTo(atan2(y-pos[1],x-pos[0])/PI,100);
   double distX = x-pos[0];
   double distY = y-pos[1];
   move(sqrt(distX*distX+distY*distY),speed);
