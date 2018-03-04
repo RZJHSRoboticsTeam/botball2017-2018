@@ -17,11 +17,10 @@ void goToLine(double Speed) {
   double whiteValue = 0;
   create_drive_direct(Speed,Speed);
   while(dabs(whiteValue-analog(lineSensorId))<0.1) {
-    whiteValue = analog(lineSensorId);
   };
   create_stop();
   mValue = (whiteValue+analog(lineSensorId))/2.0;
-};
+}
 
 void followLine(double time, double maxSpeed, double minSpeed, bool rMode) {
   double defL = maxSpeed;
@@ -44,7 +43,7 @@ void followLine(double time, double maxSpeed, double minSpeed, bool rMode) {
     t+=0.001;
   };
   create_stop();
-};
+}
 
 void move(double distance, double speed)
 {
