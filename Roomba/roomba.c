@@ -2,6 +2,48 @@
 #include <math.h>
 double pos[] = {0,0,0};
 double PI = 3.141592;
+unsigned int lineSensorId = 0;
+
+double dabs(double val) {
+  if(val < 0) return -val;
+  return val;
+};
+
+double mValue = 0;
+
+void goToLine(double Speed) {
+  double whiteValue = 0;
+  create_drive_direct(Speed,Speed);
+  while(dabs(whiteValue-analog(lineSensorId))<0.1) {
+    whiteValue = analog(lineSensorId);
+  };
+  create_stop();
+  mValue = (whiteValue+analog(lineSensorId)/2.0;
+};
+
+void followLine(double time, double maxSpeed, double minSpeed, bool rMode) {
+  double defL = maxSpeed;
+  double defR = minSpeed;
+  if(rMode) {
+    defL = minSpeed;
+    defR = maxSpeed;
+  };
+  double t = 0;
+  while(t<time) {
+    double color = analog(lineSensorId);
+    double lSpeed = defL;
+    double rSpeed = defR;
+    if(color<mValue) {
+      lSpeed = defR;
+      rSpeed = defL;
+    };
+    create_drive_direct(lSpeed,rSpeed);
+    msleep(1);
+    t+=0.001;
+  };
+  create_stop();
+};
+
 void move(double distance, double speed)
 {
   create_drive_direct(speed,speed);
@@ -46,11 +88,15 @@ void setPos(double m[])
   pos[1] = m[1];
   pos[2] = m[2];
 }
+void code()
+{
+  goToLine(20);
+  followLine(10, 20, 10, true);
+}
 int main()
 {
   create_connect();
-  turn(0.5,100);
-  turn(-0.5,100);
+  code();
   create_disconnect();
   return 0;
 }
