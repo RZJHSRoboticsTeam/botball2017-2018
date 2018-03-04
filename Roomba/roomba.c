@@ -14,9 +14,11 @@ double dabs(double val) {
 double mValue = 0;
 
 void goToLine(double Speed) {
-  double whiteValue = 0;
+  double whiteValue = analog(lineSensorId);
+  double pVal = analog(lineSensorId);
   create_drive_direct(Speed,Speed);
-  while(dabs(whiteValue-analog(lineSensorId))<0.1) {
+  while(dabs(pVal-analog(lineSensorId))<0.1) {
+    pVal = analog(lineSensorId);
   };
   create_stop();
   mValue = (whiteValue+analog(lineSensorId))/2.0;
