@@ -1,5 +1,7 @@
 #include <kipr/botball.h>
 #include <math.h>
+typedef enum { false, true } bool;
+
 double pos[] = {0,0,0};
 double PI = 3.141592;
 unsigned int lineSensorId = 0;
@@ -18,7 +20,7 @@ void goToLine(double Speed) {
     whiteValue = analog(lineSensorId);
   };
   create_stop();
-  mValue = (whiteValue+analog(lineSensorId)/2.0;
+  mValue = (whiteValue+analog(lineSensorId))/2.0;
 };
 
 void followLine(double time, double maxSpeed, double minSpeed, bool rMode) {
