@@ -95,10 +95,19 @@ void code()
     goToLine(100);
     followLine(2, 75, -25, false);
     followLine(10, 100, 0, true);
+    /*
+    move(distance,100);
+    goToLine(100);
+    turn(-0.5,100);
+    followLine(time,maxSpeed,minSpeed,false);
+    turn(-0.5,100);
+    goToLine(100);
+    */
 }
 int main()
 {
     create_connect();
+    waitForLight(1);
     code();
     create_disconnect();
     return 0;
