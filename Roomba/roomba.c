@@ -4,6 +4,22 @@ typedef enum { false, true } bool;
 
 double pos[] = {0,0,0};
 double PI = 3.141592;
+
+unsigned int gatePort = 0;
+
+int gateOpen = 680;
+int gateClosed = 1540;
+
+void openGate()
+{
+  setServoPosition(gatePort,gateOpen);
+}
+
+void closeGate()
+{
+  setServoPosition(gatePort,gateClosed);
+}
+
 unsigned int lineSensorId = 0;
 
 double dabs(double val) {
@@ -54,6 +70,7 @@ void move(double distance, double speed)
     pos[0] += cos(pos[2]*PI)*distance;
     pos[1] += sin(pos[2]*PI)*distance;
 }
+
 void turn(double radians, double speed)//the radians variable is the radians divided by PI
 {
     if(radians<0) {
@@ -64,11 +81,13 @@ void turn(double radians, double speed)//the radians variable is the radians div
     create_stop();
     pos[2] += radians;
 }
+
 void turnTo(double radians, double speed)//the radians variable is the radians divided by PI
 {
     turn(radians-pos[2],speed);
     pos[2] = radians;
 }
+
 void moveTo(double x, double y, double speed)
 {
     turnTo(atan2(y-pos[1],x-pos[0])/PI,100);
@@ -78,6 +97,7 @@ void moveTo(double x, double y, double speed)
     pos[0] = x;
     pos[1] = y;
 }
+
 void resetPos()
 {
     pos[0] = 0;
@@ -96,12 +116,16 @@ void code()
     followLine(2, 75, -25, false);
     followLine(10, 100, 0, true);
     /*
-    move(distance,100);
+    closeGate();
+    move(distance1,100);
     goToLine(100);
     turn(-0.5,100);
     followLine(time,maxSpeed,minSpeed,false);
     turn(-0.5,100);
+    openGate();
     goToLine(100);
+    move(distance2,100);
+    move(distance2,100);
     */
 }
 int main()

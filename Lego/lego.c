@@ -5,6 +5,8 @@ unsigned int servoPort = 0;
 double pos[] = {0,0,0};
 double PI = 3.141592;
 
+int gateOpen = 0;
+int gateClosed = 0;
 void move(double distance, double speed)
 {
   for(unsigned int i = 0;i<motorPorts.length;i++) motor(motorPorts[i], speed);
@@ -66,6 +68,7 @@ void code()
 
 int main()
 {
+  waitForLight(1);
   code();
   return 0;
 }
