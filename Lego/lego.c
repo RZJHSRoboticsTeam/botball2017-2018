@@ -1,6 +1,35 @@
 #include <kipr/botball.h>
 #include <math.h>
 
+int clawOpen = 100;
+int clawBGClosed = 850;
+int clawCrateClosed = 550;
+int gateOpen = 100;
+int gateClosed = 1200;
+unsigned int gatePort = 1;
+unsigned int clawPort = 2;
+
+void openGate()
+{
+  set_servo_position(gatePort,gateOpen);
+}
+
+void closeGate()
+{
+  set_servo_position(gatePort,gateClosed);
+}
+
+void openClaw()
+{
+  set_servo_position(clawPort,clawOpen);
+}
+
+void closeClaw(bool botGuy)
+{
+  int distance = clawCrateClosed;
+  if(botGuy) distance = clawBGClosed
+  set_servo_position(clawPort,distance);
+}
 
 void code()
 {
