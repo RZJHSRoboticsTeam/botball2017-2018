@@ -49,7 +49,12 @@ msleep(3000);
 ao();//go to crates
 motor(1,10);
 msleep(500);
-ao();//align to crates
+ao();//align to crate
+openClaw();
+closeClaw(false);
+openGate();
+closeGate();
+
 }
 
 int main()
