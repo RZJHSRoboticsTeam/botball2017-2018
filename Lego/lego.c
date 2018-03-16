@@ -25,7 +25,7 @@ ao();//align to crates
 
 int main()
 {
-  waitForLight(1);
+  waitForLight(0);
   code();
   return 0;
 }
