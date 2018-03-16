@@ -1,6 +1,7 @@
 #include <kipr/botball.h>
 #include <math.h>
 
+typedef enum { false, true } bool;
 int clawOpen = 100;
 int clawBGClosed = 850;
 int clawCrateClosed = 550;
