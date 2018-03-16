@@ -32,8 +32,8 @@ double mValue = 0.0;
 void goToLine(double Speed) {
     double whiteValue = analog(lineSensorId);
     create_drive_direct(Speed,Speed);
-    while(dabs(whiteValue-analog(lineSensorId))<10) {
-        msleep(10);
+    while(dabs(whiteValue-analog(lineSensorId))<50) {
+        msleep(100);
     };
     create_stop();
     mValue = (whiteValue+analog(lineSensorId))/2.0;
@@ -65,7 +65,7 @@ void followLine(double time, double maxSpeed, double minSpeed, bool rMode) {
 void move(double distance, double speed)
 {
     create_drive_direct(speed,speed);
-    msleep(distance*1000/speed);
+    msleep(dabs(distance*1000/speed));
     create_stop();
     pos[0] += cos(pos[2]*PI)*distance;
     pos[1] += sin(pos[2]*PI)*distance;
@@ -128,10 +128,25 @@ void code()
     //followLine(2, 75, -25, false);
     //followLine(10, 100, 0, true);
     closeGate();
-    move(120,100);
-    goToLine(100);
-    move(120,100);
-    goToLine(100);
+    move(120,300);
+    goToLine(300);
+    create_drive_direct(200,200);
+    msleep(1000);
+    create_stop();
+    create_drive_direct(80,200);
+    msleep(2500);
+    create_stop();
+    create_drive_direct(20,200);
+    msleep(1125);
+    create_stop();
+    move(500,300);
+    goToLine(300);
+    create_drive_direct(-200,-20);
+    msleep(500);
+    create_stop();
+    move(150,300);
+    move(50,-300);
+    openGate();
     //turn(45,100);
     /*goToLine(100);
     followLine(5,100,0,false);
@@ -156,8 +171,10 @@ void code()
 int main()
 {
     create_connect();
+    enable_servos();
     //waitForLight(1);
     code();
     create_disconnect();
+    disable_servos();
     return 0;
 }
