@@ -47,7 +47,7 @@ void code()
 
     motor(1,40);
     motor(0,-40);
-    msleep(1200);
+    msleep(1300);
     ao();// allign y position with crates
     motor(0,100);
     motor(1,100);
@@ -55,7 +55,7 @@ void code()
     ao();// turn to crates
     motor(1,-40);
     motor(0,40);
-    msleep(1590);
+    msleep(1600);
     ao();// allign x position to crates
     openClaw();
     motor(1,-100);
@@ -64,7 +64,7 @@ void code()
     ao();//grab crate
     msleep(1000);
     //closeClaw(false);
-    set_servo_position(3, 580);
+    set_servo_position(3, 600);
     msleep(1000);
     motor(1,100);
     motor(0,100);
@@ -76,11 +76,11 @@ void code()
     ao();//align to yellow zone
     motor(1,40);
     motor(0,-40);
-    msleep(2500);
+    msleep(2250);
     ao();//move to yellow zone
     motor(1,-100);
     motor(0,-100);
-    msleep(1500);
+    msleep(1725);
 
 
     openGate();
