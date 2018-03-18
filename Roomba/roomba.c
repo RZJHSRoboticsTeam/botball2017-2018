@@ -73,7 +73,7 @@ void move(double distance, double speed)
 
 void turn(double radians, double speed)//the radians variable is the radians divided by PI
 {
-    if(radians<0) {
+    if(speed<0) {
         radians *= -1;
         speed *= -1;
     };
@@ -114,19 +114,8 @@ void setPos(double m[])
 double dropOffDistance = 0;
 double backUpDistance = 0;
 
-void dropOffPoms()
-{
-    goToLine(100);
-    openGate();
-    move(dropOffDistance,100);
-    move(dropOffDistance+backUpDistance,-100);
-    closeGate();
-}
 void code()
 {
-    //goToLine(100);
-    //followLine(2, 75, -25, false);
-    //followLine(10, 100, 0, true);
     closeGate();
     move(120,300);
     goToLine(300);
@@ -139,14 +128,34 @@ void code()
     create_drive_direct(20,200);
     msleep(1125);
     create_stop();
-    move(500,300);
+    move(400,300);
+    create_drive_direct(100,200);
+    msleep(2000);
+    create_stop();
     goToLine(300);
     create_drive_direct(-200,-20);
     msleep(500);
     create_stop();
-    move(150,300);
-    move(50,-300);
+    move(50,300);
+    move(100,-300);
     openGate();
+    move(100,200);
+    move(200,-300);
+    move(200,300);
+    move(400,-300);
+    closeGate();
+    move(350,300);
+    move(450,-300);
+    goToLine(500);
+    move(100,300);
+    turn(-60,200);
+    move(100,300);
+    followLine(1,50,0,false);
+    create_drive_direct(200,100);
+    msleep(1000);
+    create_stop();
+    move(600,300);
+    create_drive_direct(200,-200);
     //turn(45,100);
     /*goToLine(100);
     followLine(5,100,0,false);
