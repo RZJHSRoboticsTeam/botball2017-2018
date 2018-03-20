@@ -42,24 +42,24 @@ void code()
     msleep(500);
     //msleep(20000);
     set_servo_position(1, 1040);
-msleep(500);
+	msleep(500);
 
 
     motor(1,40);
     motor(0,-40);
-    msleep(1400);
+    msleep(1200);
     ao();// allign y position with crates
-    motor(0,93);
+    motor(0,100);
     motor(1,100);
-    msleep(6500);
+    msleep(6200);
     ao();// turn to crates
     motor(1,-40);
     motor(0,40);
-    msleep(1650);
+    msleep(1600);
     ao();// allign x position to crates
     openClaw();
     motor(1,-100);
-    motor(0,-93);
+    motor(0,-100);
     msleep(2000);
     ao();//grab crate
     msleep(400);
@@ -67,33 +67,33 @@ msleep(500);
     set_servo_position(3, 750);
     msleep(1000);
     motor(1,100);
-    motor(0,93);
+    motor(0,100);
     msleep(3000);
     ao();//align to yellow zone
     motor(1,40);
     motor(0,-40);
-    msleep(2200);
+    msleep(1900);
     ao();//move to yellow zone
     motor(1,-100);
-    motor(0,-93);
-    msleep(2800);
+    motor(0,-100);
+    msleep(2700);
     ao();// back up to line
     openClaw();
     motor(1, 100);
-    motor(0, 93);
-    msleep(2800);
+    motor(0, 100);
+    msleep(3000);
     ao();// turn to blue pom
     motor (1, -40);
     motor (0, 40);
-    msleep(1400);
+    msleep(600);
     set_servo_position(1, 100);
     motor (1, 100);
-    motor (0, 93);
+    motor (0, 100);
     msleep(5000);
     //openGate()
     set_servo_position(1, 1200);
     motor (1, -100);
-    motor (0, -93);
+    motor (0, -100);
 
 }
 
