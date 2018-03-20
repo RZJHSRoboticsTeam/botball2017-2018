@@ -151,33 +151,20 @@ void code()
     turn(-60,200);
     move(100,300);
     followLine(1,50,0,false);
-    create_drive_direct(160,100);
+    openGate();
+    create_drive_direct(150,100);
     msleep(1000);
     create_stop();
-    move(500,300);
+    move(540,300);
+    closeGate();
+    msleep(1000);
     create_drive_direct(200,100);
     msleep(1000);
     create_stop();
-    //turn(45,100);
-    /*goToLine(100);
-    followLine(5,100,0,false);
-    turn(0.5,100);
-    dropOffPoms();*/
-    /*
-    turn(0.5,100);
-    dropOffPoms();
-    turn(1,100);
-    goToLine(100);
-    turn(0.5,100);
-    followLine(time2,maxSpeed,minSpeed,false);
-    turn(0.5,100);
-    move(distance2,100);
-    turn(0.5,100);
-    goToLine(100);
-    move(distance3,-100);
-    turn(-0.5,100);
-    dropOffPoms();
-    */
+    create_drive_direct(200,0);
+    msleep(3500);
+    create_stop();
+    move(1100,500);
 }
 int main()
 {
