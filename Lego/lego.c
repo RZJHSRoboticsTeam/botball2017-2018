@@ -2,7 +2,7 @@
 #include <math.h>
 
 typedef enum { false, true } bool;
-int clawOpen = 200;
+int clawOpen = 150;
 int clawBGClosed = 850;
 int clawCrateClosed = 550;
 int gateOpen = 100;
@@ -42,49 +42,58 @@ void code()
     msleep(500);
     //msleep(20000);
     set_servo_position(1, 1040);
-	msleep(500);
+msleep(500);
 
 
     motor(1,40);
     motor(0,-40);
-    msleep(1300);
+    msleep(1400);
     ao();// allign y position with crates
-    motor(0,100);
+    motor(0,93);
     motor(1,100);
-    msleep(6000);
+    msleep(6500);
     ao();// turn to crates
     motor(1,-40);
     motor(0,40);
-    msleep(1600);
+    msleep(1650);
     ao();// allign x position to crates
     openClaw();
     motor(1,-100);
-    motor(0,-100);
-    msleep(2675);
+    motor(0,-93);
+    msleep(2000);
     ao();//grab crate
-    msleep(1000);
+    msleep(400);
     //closeClaw(false);
-    set_servo_position(3, 600);
+    set_servo_position(3, 750);
     msleep(1000);
     motor(1,100);
-    motor(0,100);
-    msleep(1500);
-    ao();//move out
-    motor(1,100);
-    motor(0,100);
-    msleep(600);
+    motor(0,93);
+    msleep(3000);
     ao();//align to yellow zone
     motor(1,40);
     motor(0,-40);
-    msleep(2250);
+    msleep(2200);
     ao();//move to yellow zone
     motor(1,-100);
-    motor(0,-100);
-    msleep(1725);
-
-
-    openGate();
-    closeGate();
+    motor(0,-93);
+    msleep(2800);
+    ao();// back up to line
+    openClaw();
+    motor(1, 100);
+    motor(0, 93);
+    msleep(2800);
+    ao();// turn to blue pom
+    motor (1, -40);
+    motor (0, 40);
+    msleep(1400);
+    set_servo_position(1, 100);
+    motor (1, 100);
+    motor (0, 93);
+    msleep(5000);
+    //openGate()
+    set_servo_position(1, 1200);
+    motor (1, -100);
+    motor (0, -93);
 
 }
 
