@@ -32,7 +32,7 @@ double mValue = 0.0;
 void goToLine(double Speed) {
     double whiteValue = analog(lineSensorId);
     create_drive_direct(Speed,Speed);
-    while(dabs(whiteValue-analog(lineSensorId))<50) {
+    while(dabs(whiteValue-analog(lineSensorId))<25) {
         msleep(100);
     };
     create_stop();
@@ -151,11 +151,13 @@ void code()
     turn(-60,200);
     move(100,300);
     followLine(1,50,0,false);
+    create_drive_direct(160,100);
+    msleep(1000);
+    create_stop();
+    move(500,300);
     create_drive_direct(200,100);
     msleep(1000);
     create_stop();
-    move(600,300);
-    create_drive_direct(200,-200);
     //turn(45,100);
     /*goToLine(100);
     followLine(5,100,0,false);
