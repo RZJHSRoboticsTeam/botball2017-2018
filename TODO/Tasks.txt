@@ -1,0 +1,9 @@
+1. Complete Board
+  Taping - March 4th
+2. Stress Test
+  Get positions of servos - March 4th
+3. Programming
+  Paths
+  Functions for Lego
+  Final code
+4. Final Documentation
