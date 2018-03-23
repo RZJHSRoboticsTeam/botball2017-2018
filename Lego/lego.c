@@ -52,8 +52,23 @@ void goToLine() {
     ao();
     mValue = (whiteValue+analog(lineSensorId))/2.0;
 }
-
-void followLine(double time, double maxSpeed, double minSpeed, bool rMode) {
+void followLine(){
+    int x = 0;
+while(x< 30) {
+if (analog(1)<= 2048){
+motor(0,80);
+motor(1,100); 
+    msleep(200); 
+}
+else{
+motor(0,100);
+motor(1,72); 
+    msleep(200);
+}
+    x++;
+}
+}
+void followLineBeta(double time, double maxSpeed, double minSpeed, bool rMode) {
     double defL = maxSpeed;
     double defR = minSpeed;
     if(rMode) {
@@ -97,12 +112,12 @@ void code()
     ao();// turn to crates
     motor(1,-40);
     motor(0,40);
-    msleep(1600);
+    msleep(1620);
     ao();// allign x position to crates
     openClaw();
     motor(1,-100);
     motor(0,-100);
-    msleep(1800);
+    msleep(1700);
     ao();//grab crate
     msleep(400);
     //closeClaw(false);
@@ -120,19 +135,18 @@ void code()
     motor(0,-100);
     msleep(2000);
     ao();// back up to line
+    msleep(500);
     openClaw();
-    
+    msleep(500);
     motor(1, 100);
     motor(0, 100);
     msleep(3000);
     ao();// turn to blue pom
     motor (1, -40);
     motor (0, 40);
-    msleep(400);
+    msleep(850);
     set_servo_position(1, 100);
-    motor (1, 100); 
-    motor (0, 100);
-    msleep(3900);
+    followLine();
     //openGate()
     set_servo_position(1, 1200);
     motor (1, -100);
