@@ -57,12 +57,12 @@ void followLine(){
 while(x<55) {
 if (analog(1)<= 3600){
 motor(0,100);
-motor(1,70); 
-    msleep(100); 
+motor(1,70);
+    msleep(100);
 }
 else{
 motor(0,62);
-motor(1,100); 
+motor(1,100);
     msleep(100);
 }
     x++;
@@ -105,7 +105,7 @@ void code()
     motor(0, -40);
     motor(1, 40);
     msleep(1400);
-    ao();// allign y position with crates 
+    ao();// allign y position with crates
     motor(0,100);
     motor(1,100);
     msleep(6150);
@@ -122,7 +122,7 @@ void code()
     msleep(400);
     //closeClaw(false);
     set_servo_position(3, 890);
-    msleep(1000); 
+    msleep(1000);
     motor(1,100);
     motor(0,100);
     msleep(2900);
@@ -156,6 +156,8 @@ void code()
     motor (0, -100);
   
     
+
+
 
 }
 
