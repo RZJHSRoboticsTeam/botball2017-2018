@@ -54,16 +54,16 @@ void goToLine() {
 }
 void followLine(){
     int x = 0;
-while(x< 30) {
-if (analog(1)<= 2048){
-motor(0,80);
-motor(1,100); 
-    msleep(200); 
+while(x<55) {
+if (analog(1)<= 3600){
+motor(0,100);
+motor(1,70); 
+    msleep(100); 
 }
 else{
-motor(0,100);
-motor(1,72); 
-    msleep(200);
+motor(0,62);
+motor(1,100); 
+    msleep(100);
 }
     x++;
 }
@@ -133,7 +133,7 @@ void code()
     ao();//move to yellow zone
     motor(1,-100);
     motor(0,-100);
-    msleep(2000);
+    msleep(1950);
     ao();// back up to line
     msleep(500);
     openClaw();
@@ -147,6 +147,9 @@ void code()
     msleep(850);
     set_servo_position(1, 100);
     followLine();
+    motor(1,100);
+    motor(0,100);
+    msleep(750);
     //openGate()
     set_servo_position(1, 1200);
     motor (1, -100);
@@ -161,6 +164,6 @@ int main()
     //wait_for_light(0);
     //msleep(60000); //wait for roomba to finish
     code();
-
+//followLine();
     return 0;
 }
